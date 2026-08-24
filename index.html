@@ -83,18 +83,20 @@
 
     .products {
       padding: 35px 20px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
     }
 
     .products h2 {
       text-align: center;
       margin-bottom: 25px;
+      font-size: 28px;
+      color: #111;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
 
@@ -104,22 +106,41 @@
       text-align: center;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     }
 
     .card h3 {
       margin-bottom: 10px;
+      font-size: 20px;
+      color: #111;
+    }
+
+    .card p {
+      color: #666;
+      margin-bottom: 15px;
+      font-size: 14px;
     }
 
     .price {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: bold;
       margin-bottom: 15px;
       color: #e74c3c;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #27ae60;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-bottom: 10px;
     }
 
     .contact {
@@ -131,6 +152,7 @@
 
     .contact h2 {
       margin-bottom: 15px;
+      font-size: 28px;
     }
 
     .contact-info {
@@ -163,27 +185,59 @@
     <h2>Our Products</h2>
     <div class="grid">
       <div class="card">
-        <h3>Men's Jeans</h3>
-        <p>Premium quality denim jeans</p>
+        <div class="badge">BESTSELLER</div>
+        <h3>Classic Blue Jeans</h3>
+        <p>Premium quality denim with perfect fit</p>
         <div class="price">Starting ₹699</div>
       </div>
 
       <div class="card">
+        <div class="badge">TRENDING</div>
         <h3>Regular Fit Jeans</h3>
-        <p>Comfortable and stylish</p>
+        <p>Comfortable and stylish for everyday wear</p>
         <div class="price">Starting ₹799</div>
       </div>
 
       <div class="card">
+        <div class="badge">PREMIUM</div>
         <h3>Slim Fit Jeans</h3>
-        <p>Modern slim-fit collection</p>
+        <p>Modern slim-fit collection for style lovers</p>
         <div class="price">Starting ₹899</div>
       </div>
 
       <div class="card">
-        <h3>New Collection</h3>
-        <p>Latest fashion collection</p>
-        <div class="price">Visit Our Shop</div>
+        <div class="badge">NEW</div>
+        <h3>Women's Jeans</h3>
+        <p>Stylish and comfortable for women</p>
+        <div class="price">Starting ₹799</div>
+      </div>
+
+      <div class="card">
+        <div class="badge">KIDS</div>
+        <h3>Kids Jeans</h3>
+        <p>Soft and durable for growing kids</p>
+        <div class="price">Starting ₹599</div>
+      </div>
+
+      <div class="card">
+        <div class="badge">PREMIUM</div>
+        <h3>Distressed Jeans</h3>
+        <p>Trendy distressed design for fashion-forward look</p>
+        <div class="price">Starting ₹999</div>
+      </div>
+
+      <div class="card">
+        <div class="badge">CASUAL</div>
+        <h3>Black Jeans</h3>
+        <p>Versatile black denim for any occasion</p>
+        <div class="price">Starting ₹749</div>
+      </div>
+
+      <div class="card">
+        <div class="badge">COMBO</div>
+        <h3>Jeans Combo Pack</h3>
+        <p>Buy 2 get special discount on combo packs</p>
+        <div class="price">Special Offer</div>
       </div>
     </div>
   </section>
