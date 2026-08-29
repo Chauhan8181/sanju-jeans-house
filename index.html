@@ -89,6 +89,75 @@ a{
     font-size:26px;
   }
 }
+  .product-details{
+  max-width:1100px;
+  margin:30px auto;
+  padding:20px;
+}
+
+.product-details h2{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.product-box{
+  background:white;
+  margin:25px auto;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.12);
+  max-width:500px;
+}
+
+.product-box img{
+  width:100%;
+  max-height:450px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.product-box h2{
+  margin:15px 0 8px;
+}
+
+.product-box h3{
+  font-size:22px;
+}
+
+.product-box button{
+  padding:10px 18px;
+  margin:5px;
+  border:1px solid #ccc;
+  background:white;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.product-box button:hover{
+  background:#111;
+  color:white;
+}
+
+.bag-btn{
+  width:100%;
+  background:#111 !important;
+  color:white !important;
+  font-size:18px;
+  padding:15px !important;
+  margin-top:15px !important;
+  border-radius:10px !important;
+}
+
+@media(max-width:600px){
+  .product-details{
+    padding:10px;
+  }
+
+  .product-box{
+    margin:20px 5px;
+    padding:15px;
+  }
+}
 </style>
 </head>
 <body>
@@ -120,7 +189,76 @@ a{
 
 <p>Premium Men's Denim</p>
 </div>
+<div class="product-details">
 
+<h2>Product Details</h2>
+
+<div class="product-box">
+<img src="jeans-black.jpg" alt="Black Jeans">
+<h2>Black Jeans</h2>
+<h3>₹1,499</h3>
+
+<p><b>Color:</b> Black</p>
+
+<p><b>Select Size:</b></p>
+<button>S</button>
+<button>M</button>
+<button>L</button>
+<button>XL</button>
+
+<h3>Delivery & Return Details</h3>
+<p>🚚 Delivery available across India</p>
+<p>🔄 10 Day Return & Exchange</p>
+<p>💵 COD available at checkout</p>
+
+<button class="bag-btn">🛍️ Add to Bag</button>
+</div>
+
+
+<div class="product-box">
+<img src="jeans-blue.jpg" alt="Blue Jeans">
+<h2>Blue Jeans</h2>
+<h3>₹1,599</h3>
+
+<p><b>Color:</b> Blue</p>
+
+<p><b>Select Size:</b></p>
+<button>S</button>
+<button>M</button>
+<button>L</button>
+<button>XL</button>
+
+<h3>Delivery & Return Details</h3>
+<p>🚚 Delivery available across India</p>
+<p>🔄 10 Day Return & Exchange</p>
+<p>💵 COD available at checkout</p>
+
+<button class="bag-btn">🛍️ Add to Bag</button>
+</div>
+
+
+<div class="product-box">
+<img src="jeans-lightblue.jpg" alt="Light Blue Jeans">
+<h2>Light Blue Jeans</h2>
+<h3>₹1,599</h3>
+
+<p><b>Color:</b> Light Blue</p>
+
+<p><b>Select Size:</b></p>
+<button>S</button>
+<button>M</button>
+<button>L</button>
+<button>XL</button>
+
+<h3>Delivery & Return Details</h3>
+<p>🚚 Delivery available across India</p>
+<p>🔄 10 Day Return & Exchange</p>
+<p>💵 COD available at checkout</p>
+
+<button class="bag-btn">🛍️ Add to Bag</button>
+</div>
+
+</div>
 
 
 <div class="card">
