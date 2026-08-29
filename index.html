@@ -3,224 +3,326 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sanju Jeans House - Premium Men's Denim</title>
+
+<title>Sanju Jeans House - Premium Men's Fashion</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f5f5f5;
-color:#222;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5f5;
+  color:#222;
 }
+
 header{
-background:#111;
-color:white;
-padding:15px 20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:100;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#111;
+  color:#fff;
+  padding:12px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
-.logo{
-display:flex;
-align-items:center;
-gap:12px;
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
-.logo img{
-width:48px;
-height:48px;
-object-fit:contain;
-border-radius:8px;
+
+.brand img{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  border-radius:8px;
 }
-.logo h1{
-margin:0;
-font-size:20px;
+
+.brand h1{
+  margin:0;
+  font-size:20px;
 }
-.cart-btn{
-background:white;
-color:#111;
-border:0;
-padding:10px 16px;
-border-radius:25px;
-font-weight:bold;
-cursor:pointer;
+
+.cartButton{
+  border:0;
+  background:#fff;
+  color:#111;
+  padding:11px 16px;
+  border-radius:25px;
+  font-weight:bold;
+  cursor:pointer;
 }
+
 .hero{
-background:#111;
-color:white;
-padding:35px 20px;
-text-align:center;
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:35px 15px;
 }
+
 .hero h2{
-font-size:30px;
-margin:5px 0 10px;
+  margin:0 0 8px;
+  font-size:30px;
 }
+
 .hero p{
-margin:0;
-color:#ccc;
+  margin:0;
+  color:#ccc;
 }
+
+.controls{
+  max-width:1100px;
+  margin:20px auto;
+  padding:0 15px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.controls input,
+.controls select{
+  flex:1;
+  min-width:180px;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  background:#fff;
+}
+
 .products{
-max-width:1100px;
-margin:25px auto;
-padding:0 15px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-gap:18px;
+  max-width:1100px;
+  margin:auto;
+  padding:0 15px 30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
 }
+
 .product{
-background:white;
-border-radius:14px;
-overflow:hidden;
-box-shadow:0 3px 12px #0001;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 3px 12px #0002;
 }
+
 .product img{
-width:100%;
-height:250px;
-object-fit:cover;
-background:#eee;
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  background:#eee;
 }
-.info{
-padding:15px;
+
+.productInfo{
+  padding:15px;
 }
-.info h3{
-margin:0 0 8px;
-font-size:18px;
+
+.productInfo h3{
+  margin:0 0 8px;
+  font-size:18px;
 }
+
+.category{
+  font-size:13px;
+  color:#777;
+}
+
 .price{
-font-size:20px;
-font-weight:bold;
-margin:8px 0;
+  margin:8px 0;
+  font-size:21px;
+  font-weight:bold;
 }
+
 .size{
-width:100%;
-padding:10px;
-margin:8px 0;
-border:1px solid #ccc;
-border-radius:7px;
+  width:100%;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:7px;
+  margin:6px 0 10px;
 }
-.buy{
-width:100%;
-border:0;
-background:#111;
-color:white;
-padding:12px;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
+
+.add{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
 }
-.cart{
-position:fixed;
-right:-430px;
-top:0;
-width:420px;
-max-width:100%;
-height:100%;
-background:white;
-z-index:200;
-box-shadow:-5px 0 20px #0003;
-transition:.3s;
-padding:20px;
-overflow-y:auto;
+
+.cartPanel{
+  position:fixed;
+  right:-450px;
+  top:0;
+  width:430px;
+  max-width:100%;
+  height:100%;
+  background:#fff;
+  z-index:2000;
+  padding:20px;
+  overflow-y:auto;
+  box-shadow:-5px 0 20px #0003;
+  transition:.3s;
 }
-.cart.open{
-right:0;
+
+.cartPanel.open{
+  right:0;
 }
-.cart-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
+
+.cartHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
+
 .close{
-border:0;
-background:#eee;
-border-radius:50%;
-width:35px;
-height:35px;
-cursor:pointer;
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
 }
-.cart-item{
-display:flex;
-gap:10px;
-padding:12px 0;
-border-bottom:1px solid #ddd;
+
+.cartItem{
+  display:flex;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #ddd;
 }
-.cart-item img{
-width:65px;
-height:65px;
-object-fit:cover;
-border-radius:8px;
+
+.cartItem img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:8px;
 }
-.cart-item h4{
-margin:0 0 6px;
+
+.cartItem h4{
+  margin:0 0 5px;
 }
+
 .qty button{
-border:1px solid #ccc;
-background:white;
-padding:3px 9px;
-cursor:pointer;
+  border:1px solid #ccc;
+  background:#fff;
+  padding:4px 10px;
+  cursor:pointer;
 }
+
 .total{
-font-size:22px;
-font-weight:bold;
-margin:20px 0;
+  font-size:22px;
+  font-weight:bold;
+  margin:20px 0;
 }
+
 .form input,
 .form textarea{
-width:100%;
-padding:12px;
-margin:6px 0;
-border:1px solid #ccc;
-border-radius:7px;
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border:1px solid #ccc;
+  border-radius:7px;
 }
-.payment{
-margin:15px 0;
+
+.paymentBox{
+  margin-top:15px;
 }
-.payment label{
-display:block;
-background:#f5f5f5;
-padding:12px;
-margin:7px 0;
-border-radius:8px;
-cursor:pointer;
+
+.paymentOption{
+  display:block;
+  background:#f5f5f5;
+  padding:12px;
+  margin:7px 0;
+  border-radius:8px;
+  cursor:pointer;
 }
-.advance{
-background:#eaf8ee;
-padding:12px;
-border-radius:8px;
-margin-top:10px;
-display:none;
+
+.advanceBox{
+  display:none;
+  background:#eaf8ee;
+  padding:12px;
+  border-radius:8px;
+  margin:10px 0;
 }
-.order{
-width:100%;
-background:#111;
-color:white;
-padding:14px;
-border:0;
-border-radius:8px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
+
+.placeOrder{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:#fff;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
 }
+
 .empty{
-text-align:center;
-padding:30px 0;
-color:#777;
+  text-align:center;
+  color:#777;
+  padding:30px;
 }
+
+.confirmation{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  background:#fff;
+  padding:30px 20px;
+  overflow:auto;
+  text-align:center;
+}
+
+.confirmationBox{
+  max-width:500px;
+  margin:50px auto;
+  padding:25px;
+  border-radius:15px;
+  background:#f5f5f5;
+}
+
+.confirmation h2{
+  color:green;
+}
+
+.continue{
+  border:0;
+  padding:12px 20px;
+  background:#111;
+  color:#fff;
+  border-radius:8px;
+}
+
 footer{
-background:#111;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:30px;
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:25px;
 }
+
 @media(max-width:500px){
-.logo h1{font-size:16px}
-.hero h2{font-size:24px}
-.product img{height:220px}
-.cart{width:100%}
+
+  .brand h1{
+    font-size:16px;
+  }
+
+  .hero h2{
+    font-size:24px;
+  }
+
+  .product img{
+    height:220px;
+  }
+
+  .cartPanel{
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -229,459 +331,915 @@ margin-top:30px;
 
 <header>
 
-<div class="logo">
-<img src="sanju-logo.jpeg" alt="Sanju Jeans House">
-<h1>Sanju Jeans House</h1>
-</div>
+  <div class="brand">
+    <img src="sanju-logo.jpeg" alt="Sanju Jeans House">
+    <h1>Sanju Jeans House</h1>
+  </div>
 
-<button class="cart-btn" onclick="openCart()">
-🛒 Cart <span id="cartCount">0</span>
-</button>
+  <button class="cartButton" onclick="openCart()">
+    🛒 Cart <span id="cartCount">0</span>
+  </button>
 
 </header>
 
+
 <section class="hero">
-<h2>Premium Men's Fashion</h2>
-<p>Jeans | T-Shirts | Shirts | Jackets</p>
+
+  <h2>Premium Men's Fashion</h2>
+
+  <p>
+    Jeans | T-Shirts | Shirts | Jackets | Pants
+  </p>
+
 </section>
 
-<div class="products">
 
-<div class="product">
-<img src="jeans-black.jpg" alt="Black Jeans">
-<div class="info">
-<h3>Premium Black Jeans</h3>
-<div class="price">₹1,499</div>
+<div class="controls">
 
-<select class="size" id="size1">
-<option value="28">Size 28</option>
-<option value="30">Size 30</option>
-<option value="32">Size 32</option>
-<option value="34">Size 34</option>
-<option value="36">Size 36</option>
-</select>
+  <input
+    id="search"
+    type="search"
+    placeholder="🔍 Search products..."
+    oninput="showProducts()"
+  >
 
-<button class="buy"
-onclick="addToCart('Premium Black Jeans',1499,'jeans-black.jpg','size1')">
-Add to Cart
-</button>
-</div>
-</div>
+  <select id="category" onchange="showProducts()">
 
-<div class="product">
-<img src="jeans-blue.jpg" alt="Blue Jeans">
-<div class="info">
-<h3>Premium Blue Jeans</h3>
-<div class="price">₹1,499</div>
+    <option value="all">All Categories</option>
 
-<select class="size" id="size2">
-<option value="28">Size 28</option>
-<option value="30">Size 30</option>
-<option value="32">Size 32</option>
-<option value="34">Size 34</option>
-<option value="36">Size 36</option>
-</select>
+    <option value="Jeans">Jeans</option>
 
-<button class="buy"
-onclick="addToCart('Premium Blue Jeans',1499,'jeans-blue.jpg','size2')">
-Add to Cart
-</button>
-</div>
-</div>
+    <option value="T-Shirts">T-Shirts</option>
 
-<div class="product">
-<img src="jeans-lightblue.jpg" alt="Light Blue Jeans">
-<div class="info">
-<h3>Premium Light Blue Jeans</h3>
-<div class="price">₹1,499</div>
+    <option value="Shirts">Shirts</option>
 
-<select class="size" id="size3">
-<option value="28">Size 28</option>
-<option value="30">Size 30</option>
-<option value="32">Size 32</option>
-<option value="34">Size 34</option>
-<option value="36">Size 36</option>
-</select>
+    <option value="Jackets">Jackets</option>
 
-<button class="buy"
-onclick="addToCart('Premium Light Blue Jeans',1499,'jeans-lightblue.jpg','size3')">
-Add to Cart
-</button>
-</div>
-</div>
+    <option value="Pants">Pants</option>
 
-<div class="product">
-<img src="pant-1.jpg" alt="Premium Pant">
-<div class="info">
-<h3>Premium Men's Pant</h3>
-<div class="price">₹1,299</div>
-
-<select class="size" id="size4">
-<option value="28">Size 28</option>
-<option value="30">Size 30</option>
-<option value="32">Size 32</option>
-<option value="34">Size 34</option>
-<option value="36">Size 36</option>
-</select>
-
-<button class="buy"
-onclick="addToCart('Premium Mens Pant',1299,'pant-1.jpg','size4')">
-Add to Cart
-</button>
-</div>
-</div>
-
-<div class="product">
-<img src="pant-2.jpg" alt="Premium Pant">
-<div class="info">
-<h3>Premium Casual Pant</h3>
-<div class="price">₹1,299</div>
-
-<select class="size" id="size5">
-<option value="28">Size 28</option>
-<option value="30">Size 30</option>
-<option value="32">Size 32</option>
-<option value="34">Size 34</option>
-<option value="36">Size 36</option>
-</select>
-
-<button class="buy"
-onclick="addToCart('Premium Casual Pant',1299,'pant-2.jpg','size5')">
-Add to Cart
-</button>
-</div>
-</div>
+  </select>
 
 </div>
 
-<div id="cart" class="cart">
 
-<div class="cart-head">
-<h2>🛒 Your Cart</h2>
-<button class="close" onclick="closeCart()">✕</button>
+<div id="products" class="products"></div>
+
+
+<div id="cartPanel" class="cartPanel">
+
+  <div class="cartHeader">
+
+    <h2>🛒 Your Cart</h2>
+
+    <button class="close" onclick="closeCart()">✕</button>
+
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="total">
+    Total: ₹<span id="total">0</span>
+  </div>
+
+
+  <div class="form">
+
+    <h3>Delivery Details</h3>
+
+    <input
+      id="customerName"
+      type="text"
+      placeholder="Full Name"
+    >
+
+    <input
+      id="customerMobile"
+      type="tel"
+      placeholder="Mobile Number"
+    >
+
+    <textarea
+      id="customerAddress"
+      rows="4"
+      placeholder="Complete Delivery Address"
+    ></textarea>
+
+
+    <div class="paymentBox">
+
+      <h3>Payment Method</h3>
+
+      <label class="paymentOption">
+
+        <input
+          type="radio"
+          name="payment"
+          value="online"
+          onchange="paymentChanged()"
+        >
+
+        💳 100% Online Payment
+
+      </label>
+
+
+      <label class="paymentOption">
+
+        <input
+          type="radio"
+          name="payment"
+          value="advance"
+          onchange="paymentChanged()"
+        >
+
+        🟢 50% Advance Payment
+
+      </label>
+
+
+      <label class="paymentOption">
+
+        <input
+          type="radio"
+          name="payment"
+          value="cod"
+          onchange="paymentChanged()"
+        >
+
+        💵 Cash on Delivery
+
+      </label>
+
+    </div>
+
+
+    <div id="advanceBox" class="advanceBox">
+
+      <b>50% Advance:</b>
+      ₹<span id="advanceAmount">0</span>
+
+      <br><br>
+
+      <b>Remaining COD:</b>
+      ₹<span id="remainingAmount">0</span>
+
+    </div>
+
+
+    <button
+      class="placeOrder"
+      onclick="placeOrder()"
+    >
+      Place Order
+    </button>
+
+  </div>
+
 </div>
 
-<div id="cartItems"></div>
 
-<div class="total">
-Total: ₹<span id="total">0</span>
-</div>
+<div id="confirmation" class="confirmation">
 
-<div class="form">
+  <div class="confirmationBox">
 
-<h3>Customer Details</h3>
+    <h2>✅ Order Received!</h2>
 
-<input id="name" type="text" placeholder="Full Name">
+    <p>Your order has been successfully placed.</p>
 
-<input id="mobile" type="tel" placeholder="Mobile Number">
+    <h3>
+      Order ID:
+      <span id="confirmationOrderId"></span>
+    </h3>
 
-<textarea id="address" rows="4"
-placeholder="Delivery Address"></textarea>
+    <div id="confirmationDetails"></div>
 
-<div class="payment">
+    <br>
 
-<h3>Payment Method</h3>
+    <button
+      class="continue"
+      onclick="closeConfirmation()"
+    >
+      Continue Shopping
+    </button>
 
-<label>
-<input type="radio"
-name="payment"
-value="online"
-onchange="paymentChanged()">
-💳 100% Online Payment
-</label>
-
-<label>
-<input type="radio"
-name="payment"
-value="advance"
-onchange="paymentChanged()">
-🟢 50% Advance Payment
-</label>
-
-<label>
-<input type="radio"
-name="payment"
-value="cod"
-onchange="paymentChanged()">
-💵 Cash on Delivery
-</label>
+  </div>
 
 </div>
 
-<div id="advanceBox" class="advance">
-<b>50% Advance Amount:</b>
-₹<span id="advanceAmount">0</span><br><br>
-<b>Remaining on Delivery:</b>
-₹<span id="remainingAmount">0</span>
-</div>
-
-<button class="order" onclick="placeOrder()">
-Place Order
-</button>
-
-</div>
-</div>
 
 <footer>
-<b>Sanju Jeans House</b><br>
-Premium Men's Denim Collection<br><br>
-© 2026 Sanju Jeans House. All Rights Reserved.
+
+  <b>Sanju Jeans House</b>
+
+  <br><br>
+
+  Premium Men's Denim Collection
+
+  <br><br>
+
+  © 2026 Sanju Jeans House. All Rights Reserved.
+
 </footer>
+
 
 <script>
 
-let cart=[];
+const UPI_ID = "704144850@ybl";
 
-function addToCart(name,price,image,sizeId){
 
-let size=document.getElementById(sizeId).value;
+const products = [
 
-let item=cart.find(
-x=>x.name===name && x.size===size
-);
+  {
+    id:1,
+    name:"Premium Black Jeans",
+    category:"Jeans",
+    price:1499,
+    image:"jeans-black.jpg"
+  },
 
-if(item){
-item.qty++;
-}else{
-cart.push({
-name:name,
-price:price,
-image:image,
-size:size,
-qty:1
-});
+  {
+    id:2,
+    name:"Premium Blue Jeans",
+    category:"Jeans",
+    price:1499,
+    image:"jeans-blue.jpg"
+  },
+
+  {
+    id:3,
+    name:"Premium Light Blue Jeans",
+    category:"Jeans",
+    price:1499,
+    image:"jeans-lightblue.jpg"
+  },
+
+  {
+    id:4,
+    name:"Premium Men's Pant",
+    category:"Pants",
+    price:1299,
+    image:"pant-1.jpg"
+  },
+
+  {
+    id:5,
+    name:"Premium Casual Pant",
+    category:"Pants",
+    price:1299,
+    image:"pant-2.jpg"
+  }
+
+];
+
+
+let cart = [];
+
+
+function showProducts(){
+
+  const search =
+    document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+  const category =
+    document
+    .getElementById("category")
+    .value;
+
+  const box =
+    document.getElementById("products");
+
+  box.innerHTML = "";
+
+
+  const filtered =
+    products.filter(product => {
+
+      const matchSearch =
+        product.name
+        .toLowerCase()
+        .includes(search);
+
+      const matchCategory =
+        category === "all" ||
+        product.category === category;
+
+      return matchSearch && matchCategory;
+
+    });
+
+
+  filtered.forEach(product => {
+
+    box.innerHTML += `
+
+      <div class="product">
+
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+        >
+
+        <div class="productInfo">
+
+          <div class="category">
+            ${product.category}
+          </div>
+
+          <h3>
+            ${product.name}
+          </h3>
+
+          <div class="price">
+            ₹${product.price}
+          </div>
+
+
+          <select
+            class="size"
+            id="size-${product.id}"
+          >
+
+            <option value="">Select Size</option>
+
+            <option value="28">Size 28</option>
+
+            <option value="30">Size 30</option>
+
+            <option value="32">Size 32</option>
+
+            <option value="34">Size 34</option>
+
+            <option value="36">Size 36</option>
+
+          </select>
+
+
+          <button
+            class="add"
+            onclick="addToCart(${product.id})"
+          >
+            🛒 Add to Cart
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
 }
 
-updateCart();
-openCart();
+
+function addToCart(id){
+
+  const product =
+    products.find(p => p.id === id);
+
+  const size =
+    document
+    .getElementById("size-" + id)
+    .value;
+
+
+  if(!size){
+
+    alert("Please select a size.");
+
+    return;
+
+  }
+
+
+  const existing =
+    cart.find(
+      item =>
+      item.id === id &&
+      item.size === size
+    );
+
+
+  if(existing){
+
+    existing.qty++;
+
+  }else{
+
+    cart.push({
+
+      id:product.id,
+
+      name:product.name,
+
+      category:product.category,
+
+      price:product.price,
+
+      image:product.image,
+
+      size:size,
+
+      qty:1
+
+    });
+
+  }
+
+
+  updateCart();
+
+  openCart();
+
 }
+
 
 function updateCart(){
 
-let box=document.getElementById("cartItems");
+  const box =
+    document.getElementById("cartItems");
 
-let count=0;
-let total=0;
+  box.innerHTML = "";
 
-box.innerHTML="";
 
-if(cart.length===0){
+  let total = 0;
 
-box.innerHTML=
-'<div class="empty">Your cart is empty</div>';
+  let count = 0;
+
+
+  if(cart.length === 0){
+
+    box.innerHTML =
+      '<div class="empty">Your cart is empty.</div>';
+
+  }
+
+
+  cart.forEach((item,index) => {
+
+    total +=
+      item.price * item.qty;
+
+    count += item.qty;
+
+
+    box.innerHTML += `
+
+      <div class="cartItem">
+
+        <img
+          src="${item.image}"
+          alt="${item.name}"
+        >
+
+        <div>
+
+          <h4>
+            ${item.name}
+          </h4>
+
+          Size:
+          <b>${item.size}</b>
+
+          <br>
+
+          ₹${item.price}
+
+          <br>
+
+          <div class="qty">
+
+            <button
+              onclick="changeQty(${index},-1)"
+            >
+              −
+            </button>
+
+            <b>${item.qty}</b>
+
+            <button
+              onclick="changeQty(${index},1)"
+            >
+              +
+            </button>
+
+            <button
+              onclick="removeItem(${index})"
+            >
+              ❌
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  document
+    .getElementById("cartCount")
+    .innerText = count;
+
+
+  document
+    .getElementById("total")
+    .innerText = total;
+
+
+  calculateAdvance();
 
 }
 
-cart.forEach((item,index)=>{
-
-count+=item.qty;
-total+=item.price*item.qty;
-
-box.innerHTML+=`
-
-<div class="cart-item">
-
-<img src="${item.image}">
-
-<div style="flex:1">
-
-<h4>${item.name}</h4>
-
-Size: <b>${item.size}</b><br>
-
-₹${item.price} × ${item.qty}
-
-<div class="qty">
-
-<button onclick="changeQty(${index},-1)">−</button>
-
-<b>${item.qty}</b>
-
-<button onclick="changeQty(${index},1)">+</button>
-
-<button onclick="removeItem(${index})">❌</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("cartCount").innerText=count;
-
-document.getElementById("total").innerText=total;
-
-calculateAdvance();
-}
 
 function changeQty(index,value){
 
-cart[index].qty+=value;
+  cart[index].qty += value;
 
-if(cart[index].qty<=0){
-cart.splice(index,1);
+
+  if(cart[index].qty <= 0){
+
+    cart.splice(index,1);
+
+  }
+
+
+  updateCart();
+
 }
 
-updateCart();
-}
 
 function removeItem(index){
 
-cart.splice(index,1);
+  cart.splice(index,1);
 
-updateCart();
+  updateCart();
+
 }
+
 
 function openCart(){
 
-document.getElementById("cart")
-.classList.add("open");
+  document
+    .getElementById("cartPanel")
+    .classList
+    .add("open");
 
 }
+
 
 function closeCart(){
 
-document.getElementById("cart")
-.classList.remove("open");
+  document
+    .getElementById("cartPanel")
+    .classList
+    .remove("open");
 
 }
+
+
+function getTotal(){
+
+  return cart.reduce(
+
+    (sum,item) =>
+      sum + item.price * item.qty,
+
+    0
+
+  );
+
+}
+
 
 function calculateAdvance(){
 
-let total=cart.reduce(
-(sum,item)=>sum+(item.price*item.qty),0
-);
+  const total = getTotal();
 
-document.getElementById("advanceAmount")
-.innerText=Math.round(total/2);
+  const advance =
+    Math.round(total / 2);
 
-document.getElementById("remainingAmount")
-.innerText=total-Math.round(total/2);
+  document
+    .getElementById("advanceAmount")
+    .innerText = advance;
+
+  document
+    .getElementById("remainingAmount")
+    .innerText =
+      total - advance;
 
 }
+
 
 function paymentChanged(){
 
-let method=document.querySelector(
-'input[name="payment"]:checked'
-);
+  const selected =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    );
 
-let box=document.getElementById("advanceBox");
 
-if(method && method.value==="advance"){
-box.style.display="block";
-}else{
-box.style.display="none";
+  const box =
+    document.getElementById("advanceBox");
+
+
+  if(
+    selected &&
+    selected.value === "advance"
+  ){
+
+    box.style.display = "block";
+
+  }else{
+
+    box.style.display = "none";
+
+  }
+
 }
 
+
+function createOrderId(){
+
+  return "SJH-" +
+    Math.floor(
+      100000 +
+      Math.random() * 900000
+    );
+
 }
+
 
 function placeOrder(){
 
-if(cart.length===0){
+  if(cart.length === 0){
 
-alert("Please add a product to cart.");
+    alert(
+      "Please add a product to cart."
+    );
 
-return;
+    return;
+
+  }
+
+
+  const name =
+    document
+    .getElementById("customerName")
+    .value
+    .trim();
+
+
+  const mobile =
+    document
+    .getElementById("customerMobile")
+    .value
+    .trim();
+
+
+  const address =
+    document
+    .getElementById("customerAddress")
+    .value
+    .trim();
+
+
+  const payment =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    );
+
+
+  if(!name){
+
+    alert("Please enter your name.");
+
+    return;
+
+  }
+
+
+  if(!mobile){
+
+    alert(
+      "Please enter your mobile number."
+    );
+
+    return;
+
+  }
+
+
+  if(!address){
+
+    alert(
+      "Please enter your delivery address."
+    );
+
+    return;
+
+  }
+
+
+  if(!payment){
+
+    alert(
+      "Please select a payment method."
+    );
+
+    return;
+
+  }
+
+
+  const total = getTotal();
+
+  const orderId = createOrderId();
+
+
+  let paymentText = "";
+
+
+  if(payment.value === "online"){
+
+    paymentText =
+      "100% Online Payment";
+
+  }
+
+
+  if(payment.value === "advance"){
+
+    paymentText =
+      "50% Advance Payment";
+
+  }
+
+
+  if(payment.value === "cod"){
+
+    paymentText =
+      "Cash on Delivery";
+
+  }
+
+
+  let itemsHTML = "";
+
+
+  cart.forEach(item => {
+
+    itemsHTML += `
+
+      <p>
+
+        👖 ${item.name}
+
+        <br>
+
+        📏 Size: ${item.size}
+
+        <br>
+
+        Qty: ${item.qty}
+
+        <br>
+
+        ₹${item.price * item.qty}
+
+      </p>
+
+    `;
+
+  });
+
+
+  document
+    .getElementById("confirmationOrderId")
+    .innerText = orderId;
+
+
+  document
+    .getElementById("confirmationDetails")
+    .innerHTML = `
+
+      <p>
+        <b>Customer:</b>
+        ${escapeHTML(name)}
+      </p>
+
+      <p>
+        <b>Mobile:</b>
+        ${escapeHTML(mobile)}
+      </p>
+
+      <p>
+        <b>Address:</b>
+        ${escapeHTML(address)}
+      </p>
+
+      ${itemsHTML}
+
+      <p>
+        <b>Total:</b>
+        ₹${total}
+      </p>
+
+      <p>
+        <b>Payment:</b>
+        ${paymentText}
+      </p>
+
+      <p>
+        📦 Status:
+        <b>Order Received</b>
+      </p>
+
+    `;
+
+
+  document
+    .getElementById("confirmation")
+    .style.display = "block";
+
+
+  /*
+    અહીં પછી real payment gateway
+    અને database/backend જોડવાનું છે.
+  */
+
+
+  if(
+    payment.value === "online" ||
+    payment.value === "advance"
+  ){
+
+    const amount =
+      payment.value === "advance"
+      ? Math.round(total / 2)
+      : total;
+
+
+    const upiURL =
+      "upi://pay" +
+      "?pa=" + encodeURIComponent(UPI_ID) +
+      "&pn=" +
+      encodeURIComponent(
+        "Sanju Jeans House"
+      ) +
+      "&am=" + amount +
+      "&cu=INR" +
+      "&tn=" +
+      encodeURIComponent(
+        "Order " + orderId
+      );
+
+
+    setTimeout(() => {
+
+      window.location.href =
+        upiURL;
+
+    },1200);
+
+  }
+
+
+  cart = [];
+
+  updateCart();
 
 }
 
-let name=document.getElementById("name").value.trim();
 
-let mobile=document.getElementById("mobile").value.trim();
+function closeConfirmation(){
 
-let address=document.getElementById("address").value.trim();
-
-let method=document.querySelector(
-'input[name="payment"]:checked'
-);
-
-if(!name || !mobile || !address){
-
-alert(
-"Please enter Name, Mobile Number and Address."
-);
-
-return;
+  document
+    .getElementById("confirmation")
+    .style.display = "none";
 
 }
 
-if(!method){
 
-alert("Please select a payment method.");
+function escapeHTML(text){
 
-return;
+  const div =
+    document.createElement("div");
 
-}
+  div.textContent = text;
 
-let total=cart.reduce(
-(sum,item)=>sum+(item.price*item.qty),0
-);
-
-let orderText=
-"SAnju Jeans House ORDER\n\n";
-
-cart.forEach(item=>{
-
-orderText+=
-item.name+
-" | Size: "+item.size+
-" | Qty: "+item.qty+
-" | ₹"+(item.price*item.qty)+
-"\n";
-
-});
-
-orderText+=
-"\nTotal: ₹"+total+
-"\nCustomer: "+name+
-"\nMobile: "+mobile+
-"\nAddress: "+address+
-"\nPayment: "+method.value;
-
-if(method.value==="online"){
-
-let upi=
-"upi://pay?pa=704144850@ybl"+
-"&pn=Sanju%20Jeans%20House"+
-"&am="+total+
-"&cu=INR";
-
-window.location.href=upi;
+  return div.innerHTML;
 
 }
 
-else if(method.value==="advance"){
 
-let advance=Math.round(total/2);
-
-let upi=
-"upi://pay?pa=704144850@ybl"+
-"&pn=Sanju%20Jeans%20House"+
-"&am="+advance+
-"&cu=INR";
-
-window.location.href=upi;
-
-}
-
-else{
-
-alert(
-"Order placed successfully!\n\n"+
-"Payment: Cash on Delivery\n"+
-"Total: ₹"+total
-);
-
-}
-
-console.log(orderText);
-
-}
+showProducts();
 
 updateCart();
 
