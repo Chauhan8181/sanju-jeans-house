@@ -270,4 +270,80 @@ a{
 <p>📞 Call: <a href="tel:+917041448501">+91 7041448501</a></p>
 </div>
 </body>
+  <style>
+.size-selected{
+  background:#111 !important;
+  color:white !important;
+  border-color:#111 !important;
+}
+#cartBox{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#111;
+  color:white;
+  padding:14px 18px;
+  border-radius:10px;
+  z-index:9999;
+  font-weight:bold;
+}
+</style>
+
+<div id="cartBox">🛍️ Bag: 0</div>
+
+<script>
+let cart = [];
+
+document.querySelectorAll(".product-box").forEach(function(product){
+
+  const sizeButtons = product.querySelectorAll("button:not(.bag-btn)");
+
+  sizeButtons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+      sizeButtons.forEach(function(btn){
+        btn.classList.remove("size-selected");
+      });
+
+      button.classList.add("size-selected");
+      product.dataset.selectedSize = button.innerText.trim();
+
+    });
+
+  });
+
+  const bagButton = product.querySelector(".bag-btn");
+
+  if(bagButton){
+
+    bagButton.addEventListener("click", function(){
+
+      const size = product.dataset.selectedSize;
+
+      if(!size){
+        alert("Please select a size first.");
+        return;
+      }
+
+      const name = product.querySelector("h2,h3").innerText;
+      const price = product.querySelector("h3").innerText;
+
+      cart.push({
+        product:name,
+        price:price,
+        size:size
+      });
+
+      document.getElementById("cartBox").innerText =
+        "🛍️ Bag: " + cart.length;
+
+      alert(name + " - Size " + size + " added to bag.");
+
+    });
+
+  }
+
+});
+</script>
 </html>
