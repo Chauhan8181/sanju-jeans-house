@@ -345,5 +345,25 @@ document.querySelectorAll(".product-box").forEach(function(product){
   }
 
 });
+  document.getElementById("cartBox").addEventListener("click", function(){
+  if(cart.length === 0){
+    alert("Your Bag is empty.");
+    return;
+  }
+
+  let order = "🛍️ Your Bag:\n\n";
+
+  cart.forEach(function(item, index){
+    order += (index + 1) + ". " + item.product +
+             "\nSize: " + item.size +
+             "\nPrice: " + item.price + "\n\n";
+  });
+
+  order += "Click OK to continue to Checkout.";
+
+  if(confirm(order)){
+    alert("Checkout will open here.");
+  }
+});
 </script>
 </html>
