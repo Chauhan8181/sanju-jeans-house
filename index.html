@@ -9,6 +9,9 @@ header{background:#111;color:white;padding:30px}
 .card{background:white;margin:20px;padding:30px;border-radius:15px}
   .collection img{width:30%;margin:10px;border-radius:10px;}
 @media (max-width:600px){.collection img{width:90%;margin:10px auto;display:block;}}
+  .product{display:inline-block;width:28%;margin:1%;vertical-align:top}
+.product img{width:100%;border-radius:10px}
+@media(max-width:600px){.product{display:block;width:90%;margin:15px auto}}
 </style>
 </head>
 <body>
@@ -20,9 +23,23 @@ header{background:#111;color:white;padding:30px}
 <div class="card collection">
 <h2>Our Jeans Collection</h2>
 
-<img src="jeans-black.jpg" alt="Black Jeans" style="width:30%;margin:10px;border-radius:10px;">
-<img src="jeans-blue.jpg" alt="Blue Jeans" style="width:30%;margin:10px;border-radius:10px;">
-<img src="jeans-lightblue.jpg" alt="Light Blue Jeans" style="width:30%;margin:10px;border-radius:10px;">
+<div class="product">
+<img src="jeans-black.jpg" alt="Black Jeans">
+<h3>Black Jeans</h3>
+<p>₹1,499</p>
+</div>
+
+<div class="product">
+<img src="jeans-blue.jpg" alt="Blue Jeans">
+<h3>Blue Jeans</h3>
+<p>₹1,599</p>
+</div>
+
+<div class="product">
+<img src="jeans-lightblue.jpg" alt="Light Blue Jeans">
+<h3>Light Blue Jeans</h3>
+<p>₹1,599</p>
+</div>
 
 <p>Premium Men's Denim</p>
 </div>
