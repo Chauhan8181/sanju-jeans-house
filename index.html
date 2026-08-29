@@ -391,17 +391,18 @@ if(confirm(order)){
     }
 
     let orderId = "SJH-" + Math.floor(100000 + Math.random() * 900000);
-
+let trackingId = "SJN-" + Math.floor(100000 + Math.random() * 900000);
 let whatsappMessage =
     "🛍️ SANJU JEANS HOUSE - NEW ORDER%0A%0A" +
     "🆔 Order ID: " + orderId + "%0A" +
+  "🚚 Tracking ID: " + trackingId + "%0A" +
     "👤 Name: " + encodeURIComponent(customerName) + "%0A" +
     "📱 Mobile: " + encodeURIComponent(mobile) + "%0A" +
     "🏠 Address: " + encodeURIComponent(address) + "%0A%0A" +
     "🛒 Order Details:%0A" +
     encodeURIComponent(order) + "%0A" +
     "💳 Payment: " + encodeURIComponent(paymentMethod);
-
+  
     window.open(
         "https://wa.me/917041448501?text=" + whatsappMessage,
         "_blank"
