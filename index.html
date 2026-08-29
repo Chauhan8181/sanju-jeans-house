@@ -1,414 +1,462 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Sanju Jeans House</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanju Jeans House - Premium Men's Denim</title>
+
 <style>
+*{box-sizing:border-box}
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  text-align:center;
   background:#f5f5f5;
   color:#222;
 }
-
 header{
   background:#111;
   color:white;
-  padding:35px 20px;
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
-
-header img{
-  width:180px;
-  display:block;
-  margin:0 auto 15px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
-
-header h1{
-  margin:10px 0;
-  font-size:32px;
-}
-
-header p{
-  font-size:18px;
-}
-
-.card{
-  background:white;
-  margin:25px auto;
-  padding:30px 20px;
-  border-radius:15px;
-  max-width:1000px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.08);
-}
-
-.collection{
-  display:block;
-}
-
-.collection img{
-  width:30%;
-  margin:10px;
-  border-radius:12px;
-}
-
-.product{
-  display:inline-block;
-  width:28%;
-  margin:1%;
-  vertical-align:top;
-}
-
-.product img{
-  width:100%;
-  border-radius:12px;
-}
-
-.product h3{
-  margin:12px 0 6px;
-}
-
-.product p{
-  font-size:18px;
-  font-weight:bold;
-}
-
-a{
-  color:#111;
-  font-weight:bold;
-}
-
-@media(max-width:600px){
-  .collection img,
-  .product{
-    width:90%;
-    margin:15px auto;
-    display:block;
-  }
-
-  header h1{
-    font-size:26px;
-  }
-}
-  .product-details{
-  max-width:1100px;
-  margin:30px auto;
-  padding:20px;
-}
-
-.product-details h2{
-  text-align:center;
-  margin-bottom:25px;
-}
-
-.product-box{
-  background:white;
-  margin:25px auto;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.12);
-  max-width:500px;
-}
-
-.product-box img{
-  width:100%;
-  max-height:450px;
-  object-fit:cover;
-  border-radius:12px;
-}
-
-.product-box h2{
-  margin:15px 0 8px;
-}
-
-.product-box h3{
-  font-size:22px;
-}
-
-.product-box button{
-  padding:10px 18px;
-  margin:5px;
-  border:1px solid #ccc;
-  background:white;
+.logo img{
+  width:48px;
+  height:48px;
+  object-fit:contain;
   border-radius:8px;
+}
+.logo h1{
+  margin:0;
+  font-size:20px;
+}
+.cart-btn{
+  background:white;
+  color:#111;
+  border:0;
+  padding:10px 16px;
+  border-radius:25px;
+  font-weight:bold;
   cursor:pointer;
 }
-
-.product-box button:hover{
+.hero{
   background:#111;
   color:white;
+  padding:35px 20px;
+  text-align:center;
 }
-
-.bag-btn{
+.hero h2{
+  font-size:30px;
+  margin:5px 0 10px;
+}
+.hero p{
+  margin:0;
+  color:#ccc;
+}
+.products{
+  max-width:1100px;
+  margin:25px auto;
+  padding:0 15px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+}
+.product{
+  background:white;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 3px 12px #0001;
+}
+.product img{
   width:100%;
-  background:#111 !important;
-  color:white !important;
-  font-size:18px;
-  padding:15px !important;
-  margin-top:15px !important;
-  border-radius:10px !important;
+  height:250px;
+  object-fit:cover;
+  background:#eee;
 }
-
-@media(max-width:600px){
-  .product-details{
-    padding:10px;
-  }
-
-  .product-box{
-    margin:20px 5px;
-    padding:15px;
-  }
+.info{
+  padding:15px;
+}
+.info h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+.price{
+  font-size:20px;
+  font-weight:bold;
+  margin:8px 0;
+}
+.buy{
+  width:100%;
+  border:0;
+  background:#111;
+  color:white;
+  padding:12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.cart{
+  position:fixed;
+  right:-420px;
+  top:0;
+  width:400px;
+  max-width:100%;
+  height:100%;
+  background:white;
+  z-index:200;
+  box-shadow:-5px 0 20px #0003;
+  transition:.3s;
+  padding:20px;
+  overflow-y:auto;
+}
+.cart.open{
+  right:0;
+}
+.cart-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.close{
+  border:0;
+  background:#eee;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  cursor:pointer;
+}
+.cart-item{
+  display:flex;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #ddd;
+}
+.cart-item img{
+  width:65px;
+  height:65px;
+  object-fit:cover;
+  border-radius:8px;
+}
+.cart-item h4{
+  margin:0 0 6px;
+}
+.qty button{
+  border:1px solid #ccc;
+  background:white;
+  padding:3px 9px;
+  cursor:pointer;
+}
+.total{
+  font-size:22px;
+  font-weight:bold;
+  margin:20px 0;
+}
+.form input,.form textarea{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border:1px solid #ccc;
+  border-radius:7px;
+}
+.order{
+  width:100%;
+  background:#111;
+  color:white;
+  padding:14px;
+  border:0;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+.empty{
+  text-align:center;
+  padding:30px 0;
+  color:#777;
+}
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:25px;
+  margin-top:30px;
+}
+@media(max-width:500px){
+  .logo h1{font-size:16px}
+  .hero h2{font-size:24px}
+  .product img{height:220px}
+  .cart{width:100%}
 }
 </style>
 </head>
+
 <body>
+
 <header>
-<img src="sanju-logo.jpeg" alt="Sanju Jeans House Logo" style="width:180px;display:block;margin:0 auto 220px;">
-<h1>Sanju Jeans House</h1>
-<p>Premium Men's Denim</p>
+  <div class="logo">
+    <img src="sanju-logo.jpeg" alt="Sanju Jeans House">
+    <h1>Sanju Jeans House</h1>
+  </div>
+
+  <button class="cart-btn" onclick="openCart()">
+    🛒 Cart <span id="cartCount">0</span>
+  </button>
 </header>
-<div class="card collection">
-<h2>Our Jeans Collection</h2>
 
-<div class="product">
-<img src="jeans-black.jpg" alt="Black Jeans">
-<h3>Black Jeans</h3>
-<p>₹1,499</p>
-</div>
+<section class="hero">
+  <h2>Premium Men's Fashion</h2>
+  <p>Jeans | T-Shirts | Shirts | Jackets</p>
+</section>
 
-<div class="product">
-<img src="jeans-blue.jpg" alt="Blue Jeans">
-<h3>Blue Jeans</h3>
-<p>₹1,599</p>
-</div>
+<div class="products">
 
-<div class="product">
-<img src="jeans-lightblue.jpg" alt="Light Blue Jeans">
-<h3>Light Blue Jeans</h3>
-<p>₹1,599</p>
-</div>
+  <div class="product">
+    <img src="jeans-black.jpg" alt="Black Jeans">
+    <div class="info">
+      <h3>Premium Black Jeans</h3>
+      <div class="price">₹1,499</div>
+      <button class="buy" onclick="addToCart('Premium Black Jeans',1499,'jeans-black.jpg')">
+        Add to Cart
+      </button>
+    </div>
+  </div>
 
-<p>Premium Men's Denim</p>
-</div>
-<div class="product-details">
+  <div class="product">
+    <img src="jeans-blue.jpg" alt="Blue Jeans">
+    <div class="info">
+      <h3>Premium Blue Jeans</h3>
+      <div class="price">₹1,499</div>
+      <button class="buy" onclick="addToCart('Premium Blue Jeans',1499,'jeans-blue.jpg')">
+        Add to Cart
+      </button>
+    </div>
+  </div>
 
-<h2>Product Details</h2>
+  <div class="product">
+    <img src="jeans-lightblue.jpg" alt="Light Blue Jeans">
+    <div class="info">
+      <h3>Premium Light Blue Jeans</h3>
+      <div class="price">₹1,499</div>
+      <button class="buy" onclick="addToCart('Premium Light Blue Jeans',1499,'jeans-lightblue.jpg')">
+        Add to Cart
+      </button>
+    </div>
+  </div>
 
-<div class="product-box">
-<img src="jeans-black.jpg" alt="Black Jeans">
-<h2>Black Jeans</h2>
-<h3>₹1,499</h3>
-  <p>MRP <s>₹2,999</s> <b>50% OFF</b></p>
+  <div class="product">
+    <img src="pant-1.jpg" alt="Premium Pant">
+    <div class="info">
+      <h3>Premium Men's Pant</h3>
+      <div class="price">₹1,299</div>
+      <button class="buy" onclick="addToCart('Premium Mens Pant',1299,'pant-1.jpg')">
+        Add to Cart
+      </button>
+    </div>
+  </div>
 
-<p><b>Color:</b> Black</p>
-
-<p><b>Select Size:</b></p>
-<button>S</button>
-<button>M</button>
-<button>L</button>
-<button>XL</button>
-<button>XXL</button>
-<h3>Delivery & Return Details</h3>
-<p>🚚 Delivery available across India</p>
-<p>🔄 10 Day Return & Exchange</p>
-<p>💵 COD available at checkout</p>
-
-<button class="bag-btn">🛍️ Add to Bag</button>
-</div>
-
-
-<div class="product-box">
-<img src="jeans-blue.jpg" alt="Blue Jeans">
-<h2>Blue Jeans</h2>
-<h3>₹1,599</h3>
-  <p>MRP <s>₹2,999</s> <b>50% OFF</b></p>
-
-<p><b>Color:</b> Blue</p>
-
-<p><b>Select Size:</b></p>
-<button>S</button>
-<button>M</button>
-<button>L</button>
-<button>XL</button>
-<button>XXL</button>
-<h3>Delivery & Return Details</h3>
-<p>🚚 Delivery available across India</p>
-<p>🔄 10 Day Return & Exchange</p>
-<p>💵 COD available at checkout</p>
-
-<button class="bag-btn">🛍️ Add to Bag</button>
-</div>
-
-
-<div class="product-box">
-<img src="jeans-lightblue.jpg" alt="Light Blue Jeans">
-<h2>Light Blue Jeans</h2>
-<h3>₹1,599</h3>
-<p>MRP <s>₹2,999</s> <b>50% OFF</b></p>
-<p><b>Color:</b> Light Blue</p>
-
-<p><b>Select Size:</b></p>
-<button>S</button>
-<button>M</button>
-<button>L</button>
-<button>XL</button>
-<button>XXL</button>
-<h3>Delivery & Return Details</h3>
-<p>🚚 Delivery available across India</p>
-<p>🔄 10 Day Return & Exchange</p>
-<p>💵 COD available at checkout</p>
-
-<button class="bag-btn">🛍️ Add to Bag</button>
-</div>
+  <div class="product">
+    <img src="pant-2.jpg" alt="Premium Pant">
+    <div class="info">
+      <h3>Premium Casual Pant</h3>
+      <div class="price">₹1,299</div>
+      <button class="buy" onclick="addToCart('Premium Casual Pant',1299,'pant-2.jpg')">
+        Add to Cart
+      </button>
+    </div>
+  </div>
 
 </div>
 
+<div id="cart" class="cart">
 
-<div class="card">
-<h2>Contact Us</h2>
-<p>Sanju Jeans House</p>
-<p>📱 WhatsApp: <a href="https://wa.me/917041448501">Chat on WhatsApp</a></p>
-<p>📞 Call: <a href="tel:+917041448501">+91 7041448501</a></p>
+  <div class="cart-head">
+    <h2>🛒 Your Cart</h2>
+    <button class="close" onclick="closeCart()">✕</button>
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="total">
+    Total: ₹<span id="total">0</span>
+  </div>
+
+  <div class="form">
+    <h3>Customer Details</h3>
+
+    <input id="name" type="text" placeholder="Full Name">
+
+    <input id="mobile" type="tel" placeholder="Mobile Number">
+
+    <textarea id="address" rows="4" placeholder="Delivery Address"></textarea>
+
+    <button class="order" onclick="placeOrder()">
+      Place Order
+    </button>
+  </div>
+
 </div>
-</body>
-  <style>
-.size-selected{
-  background:#111 !important;
-  color:white !important;
-  border-color:#111 !important;
-}
-#cartBox{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#111;
-  color:white;
-  padding:14px 18px;
-  border-radius:10px;
-  z-index:9999;
-  font-weight:bold;
-}
-</style>
 
-<div id="cartBox">🛍️ Bag: 0</div>
+<footer>
+  <b>Sanju Jeans House</b><br>
+  Premium Men's Denim Collection<br><br>
+  © 2026 Sanju Jeans House. All Rights Reserved.
+</footer>
 
 <script>
-let cart = [];
 
-document.querySelectorAll(".product-box").forEach(function(product){
+let cart=[];
 
-  const sizeButtons = product.querySelectorAll("button:not(.bag-btn)");
+function addToCart(name,price,image){
 
-  sizeButtons.forEach(function(button){
+  let item=cart.find(x=>x.name===name);
 
-    button.addEventListener("click", function(){
-
-      sizeButtons.forEach(function(btn){
-        btn.classList.remove("size-selected");
-      });
-
-      button.classList.add("size-selected");
-      product.dataset.selectedSize = button.innerText.trim();
-
+  if(item){
+    item.qty++;
+  }else{
+    cart.push({
+      name:name,
+      price:price,
+      image:image,
+      qty:1
     });
-
-  });
-
-  const bagButton = product.querySelector(".bag-btn");
-
-  if(bagButton){
-
-    bagButton.addEventListener("click", function(){
-
-      const size = product.dataset.selectedSize;
-
-      if(!size){
-        alert("Please select a size first.");
-        return;
-      }
-
-      const name = product.querySelector("h2,h3").innerText;
-      const price = product.querySelector("h3").innerText;
-
-      cart.push({
-        product:name,
-        price:price,
-        size:size
-      });
-
-      document.getElementById("cartBox").innerText =
-        "🛍️ Bag: " + cart.length;
-
-      alert(name + " - Size " + size + " added to bag.");
-
-    });
-
   }
 
-});
-  document.getElementById("cartBox").addEventListener("click", function(){
-  if(cart.length === 0){
-    alert("Your Bag is empty.");
+  updateCart();
+  openCart();
+}
+
+function updateCart(){
+
+  let box=document.getElementById("cartItems");
+  let count=0;
+  let total=0;
+
+  box.innerHTML="";
+
+  if(cart.length===0){
+    box.innerHTML='<div class="empty">Your cart is empty</div>';
+  }
+
+  cart.forEach((item,index)=>{
+
+    count+=item.qty;
+    total+=item.price*item.qty;
+
+    box.innerHTML+=`
+      <div class="cart-item">
+
+        <img src="${item.image}">
+
+        <div style="flex:1">
+          <h4>${item.name}</h4>
+          ₹${item.price} × ${item.qty}
+
+          <div class="qty">
+            <button onclick="changeQty(${index},-1)">−</button>
+            <b>${item.qty}</b>
+            <button onclick="changeQty(${index},1)">+</button>
+            <button onclick="removeItem(${index})">❌</button>
+          </div>
+
+        </div>
+
+      </div>
+    `;
+  });
+
+  document.getElementById("cartCount").innerText=count;
+  document.getElementById("total").innerText=total;
+}
+
+function changeQty(index,value){
+
+  cart[index].qty+=value;
+
+  if(cart[index].qty<=0){
+    cart.splice(index,1);
+  }
+
+  updateCart();
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  updateCart();
+}
+
+function openCart(){
+  document.getElementById("cart").classList.add("open");
+}
+
+function closeCart(){
+  document.getElementById("cart").classList.remove("open");
+}
+
+function placeOrder(){
+
+  if(cart.length===0){
+    alert("Please add a product to cart.");
     return;
   }
 
-  let order = "🛍️ Your Bag:\n\n";
+  let name=document.getElementById("name").value.trim();
+  let mobile=document.getElementById("mobile").value.trim();
+  let address=document.getElementById("address").value.trim();
 
-  cart.forEach(function(item, index){
-    order += (index + 1) + ". " + item.product +
-             "\nSize: " + item.size +
-             "\nPrice: " + item.price + "\n\n";
+  if(!name || !mobile || !address){
+    alert("Please enter Name, Mobile Number and Address.");
+    return;
+  }
+
+  let orderText="SANJU JEANS HOUSE ORDER\n\n";
+
+  cart.forEach(item=>{
+    orderText+=
+      item.name+
+      " - Qty: "+
+      item.qty+
+      " - ₹"+
+      (item.price*item.qty)+
+      "\n";
   });
-order += "\nCheckout";
 
-if(confirm(order)){
-    let customerName = prompt("Enter your Name:");
-    if(!customerName) return;
+  let total=cart.reduce(
+    (sum,item)=>sum+(item.price*item.qty),0
+  );
 
-    let mobile = prompt("Enter your Mobile Number:");
-    if(!mobile) return;
+  orderText+=
+    "\nTotal: ₹"+total+
+    "\n\nCustomer Name: "+name+
+    "\nMobile: "+mobile+
+    "\nAddress: "+address;
 
-    let address = prompt("Enter your Full Delivery Address:");
-    if(!address) return;
+  /*
+    હાલ static website છે.
+    Order details તૈયાર થયા પછી અહીં
+    આગળ payment/order system જોડશું.
+  */
 
-    let payment = prompt(
-        "Select Payment Method:\n\n" +
-        "1 = Cash on Delivery (COD)\n" +
-        "2 = 50% Advance Payment\n" +
-        "3 = Full Payment"
-    );
+  alert(
+    "Order details તૈયાર છે!\n\n"+
+    "Total Amount: ₹"+total+
+    "\n\nઆગળ આપણે Online Payment + Order Confirmation જોડશું."
+  );
 
-    let paymentMethod;
-
-    if(payment === "1"){
-        paymentMethod = "Cash on Delivery (COD)";
-    }else if(payment === "2"){
-        paymentMethod = "50% Advance Payment";
-    }else if(payment === "3"){
-        paymentMethod = "Full Payment";
-    }else{
-        alert("Please select 1, 2 or 3.");
-        return;
-    }
-
-    let orderId = "SJH-" + Math.floor(100000 + Math.random() * 900000);
-let trackingId = "SJN-" + Math.floor(100000 + Math.random() * 900000);
-let whatsappMessage =
-    "🛍️ SANJU JEANS HOUSE - NEW ORDER%0A%0A" +
-    "🆔 Order ID: " + orderId + "%0A" +
-  "🚚 Tracking ID: " + trackingId + "%0A" +
-    "👤 Name: " + encodeURIComponent(customerName) + "%0A" +
-    "📱 Mobile: " + encodeURIComponent(mobile) + "%0A" +
-    "🏠 Address: " + encodeURIComponent(address) + "%0A%0A" +
-    "🛒 Order Details:%0A" +
-    encodeURIComponent(order) + "%0A" +
-    "💳 Payment: " + encodeURIComponent(paymentMethod);
-  
-    window.open(
-        "https://wa.me/917041448501?text=" + whatsappMessage,
-        "_blank"
-    );
+  console.log(orderText);
 }
- 
-});
+
+updateCart();
+
 </script>
+
+</body>
 </html>
