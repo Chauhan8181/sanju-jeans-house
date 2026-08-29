@@ -358,12 +358,53 @@ document.querySelectorAll(".product-box").forEach(function(product){
              "\nSize: " + item.size +
              "\nPrice: " + item.price + "\n\n";
   });
+order += "\nCheckout";
 
-  order += "Click OK to continue to Checkout.";
+if(confirm(order)){
+    let customerName = prompt("Enter your Name:");
+    if(!customerName) return;
 
-  if(confirm(order)){
-    alert("Checkout will open here.");
-  }
+    let mobile = prompt("Enter your Mobile Number:");
+    if(!mobile) return;
+
+    let address = prompt("Enter your Full Delivery Address:");
+    if(!address) return;
+
+    let payment = prompt(
+        "Select Payment Method:\n\n" +
+        "1 = Cash on Delivery (COD)\n" +
+        "2 = 50% Advance Payment\n" +
+        "3 = Full Payment"
+    );
+
+    let paymentMethod;
+
+    if(payment === "1"){
+        paymentMethod = "Cash on Delivery (COD)";
+    }else if(payment === "2"){
+        paymentMethod = "50% Advance Payment";
+    }else if(payment === "3"){
+        paymentMethod = "Full Payment";
+    }else{
+        alert("Please select 1, 2 or 3.");
+        return;
+    }
+
+    let whatsappMessage =
+        "🛍️ SANJU JEANS HOUSE - NEW ORDER%0A%0A" +
+        "👤 Name: " + encodeURIComponent(customerName) + "%0A" +
+        "📱 Mobile: " + encodeURIComponent(mobile) + "%0A" +
+        "🏠 Address: " + encodeURIComponent(address) + "%0A%0A" +
+        "🛒 Order Details:%0A" +
+        encodeURIComponent(order) + "%0A" +
+        "💳 Payment: " + encodeURIComponent(paymentMethod);
+
+    window.open(
+        "https://wa.me/917041448501?text=" + whatsappMessage,
+        "_blank"
+    );
+}
+ 
 });
 </script>
 </html>
