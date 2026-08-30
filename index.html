@@ -1086,17 +1086,29 @@ function placeOrder(){
   const total = getTotal();
   const orderId = createOrderId();
 
-  let if(payment.value === "online"){
-    paymentText = "100% Online Payment";
-  }
+if(payment.value === "PhonePe"){
+    paymentText = "PhonePe";
+}
 
-  if(payment.value === "advance"){
-    paymentText = "50% Advance Payment";
-  }
+if(payment.value === "Google Pay"){
+    paymentText = "Google Pay";
+}
 
-  if(payment.value === "cod"){
-    paymentText = "Cash on Delivery";
-  }
+if(payment.value === "UPI"){
+    paymentText = "Pay by any UPI App";
+}
+
+if(payment.value === "Card"){
+    paymentText = "Credit / Debit Card";
+}
+
+if(payment.value === "Net Banking"){
+    paymentText = "Net Banking";
+}
+
+if(payment.value === "COD"){
+    paymentText = "Cash on Delivery / Pay on Delivery";
+}
 
   let itemsHTML = "";
   let productText = "";
