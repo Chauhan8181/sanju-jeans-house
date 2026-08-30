@@ -983,10 +983,9 @@ function placeOrder(){
     return;
   }
 
-  let name=document.getElementById("name").value.trim();
-  let mobile=document.getElementById("mobile").value.trim();
-  let address=document.getElementById("address").value.trim();
-
+  let name = document.getElementById("customerName").value.trim();
+let mobile = document.getElementById("customerMobile").value.trim();
+let address = document.getElementById("customerAddress").value.trim();
   if(!name || !mobile || !address){
     alert("Please enter Name, Mobile Number and Address.");
     return;
@@ -1038,109 +1037,120 @@ function placeOrder(){
 
 }
 
-  const name =
-    document
-    .getElementById("customerName")
-    .value
-    .trim();
+ function placeOrder(){
 
+  if(cart.length === 0){
+    alert("Please add a product to cart.");
+    return;
+  }
+
+  const name =
+    document.getElementById("customerName").value.trim();
 
   const mobile =
-    document
-    .getElementById("customerMobile")
-    .value
-    .trim();
-
+    document.getElementById("customerMobile").value.trim();
 
   const address =
-    document
-    .getElementById("customerAddress")
-    .value
-    .trim();
-
+    document.getElementById("customerAddress").value.trim();
 
   const payment =
-    document.querySelector(
-      'input[name="payment"]:checked'
-    );
-
+    document.querySelector('input[name="payment"]:checked');
 
   if(!name){
-
     alert("Please enter your name.");
-
     return;
-
   }
-
 
   if(!mobile){
-
-    alert(
-      "Please enter your mobile number."
-    );
-
+    alert("Please enter your mobile number.");
     return;
-
   }
-
 
   if(!address){
-
-    alert(
-      "Please enter your delivery address."
-    );
-
+    alert("Please enter your delivery address.");
     return;
-
   }
-
 
   if(!payment){
-
-    alert(
-      "Please select a payment method."
-    );
-
+    alert("Please select a payment method.");
     return;
-
   }
-
 
   const total = getTotal();
 
   const orderId = createOrderId();
 
-
   let paymentText = "";
 
-
   if(payment.value === "online"){
-
-    paymentText =
-      "100% Online Payment";
-
+    paymentText = "100% Online Payment";
   }
-
 
   if(payment.value === "advance"){
-
-    paymentText =
-      "50% Advance Payment";
-
+    paymentText = "50% Advance Payment";
   }
-
 
   if(payment.value === "cod"){
-
-    paymentText =
-      "Cash on Delivery";
-
+    paymentText = "Cash on Delivery";
   }
+
+  let productText = "";
+
+  cart.forEach(item => {
+
+    productText +=
+      item.name +
+      " | Size: " +
+      item.size +
+      " | Qty: " +
+      item.qty +
+      " | ₹" +
+      (item.price * item.qty) +
+      "\n";
+
+  });
+
+  const data = {
+
+    orderId: orderId,
+
+    customerName: name,
+
+    mobile: mobile,
+
+    address: address,
+
+    product: productText,
+
+    size: cart.map(item => item.size).join(", "),
+
+    amount: total,
+
+    payment: paymentText,
+
+    status: "Order Received"
+
+  };
+
+
+  fetch(
+    "https://script.google.com/macros/s/AKfycbyGZFT2Bn1QRR5MnxNU8wG4teDaUmh8SaVtI_yWEZ52xi_hyoTpNLJC1kTyT4ZkBbg/exec",
+    {
+      method: "POST",
+
+      mode: "no-cors",
+
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+
+      body: JSON.stringify(data)
+
+    }
+  );
 
 
   let itemsHTML = "";
-
 
   cart.forEach(item => {
 
@@ -1148,11 +1158,11 @@ function placeOrder(){
 
       <p>
 
-        👖 ${item.name}
+        👖 ${escapeHTML(item.name)}
 
         <br>
 
-        📏 Size: ${item.size}
+        📏 Size: ${escapeHTML(item.size)}
 
         <br>
 
@@ -1218,12 +1228,6 @@ function placeOrder(){
     .style.display = "block";
 
 
-  /*
-    અહીં પછી real payment gateway
-    અને database/backend જોડવાનું છે.
-  */
-
-
   if(
     payment.value === "online" ||
     payment.value === "advance"
@@ -1238,27 +1242,26 @@ function placeOrder(){
     const upiURL =
       "upi://pay" +
       "?pa=" + encodeURIComponent(UPI_ID) +
-      "&pn=" +
-      encodeURIComponent(
-        "Sanju Jeans House"
-      ) +
+      "&pn=" + encodeURIComponent("Sanju Jeans House") +
       "&am=" + amount +
       "&cu=INR" +
-      "&tn=" +
-      encodeURIComponent(
-        "Order " + orderId
-      );
+      "&tn=" + encodeURIComponent("Order " + orderId);
 
 
     setTimeout(() => {
 
-      window.location.href =
-        upiURL;
+      window.location.href = upiURL;
 
-    },1200);
+    }, 1200);
 
   }
 
+
+  cart = [];
+
+  updateCart();
+
+}
 
   cart = [];
 
