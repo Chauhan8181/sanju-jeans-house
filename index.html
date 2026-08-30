@@ -406,23 +406,75 @@ footer{
 
     <h3>Delivery Details</h3>
 
-    <input
-      id="customerName"
-      type="text"
-      placeholder="Full Name"
-    >
+   <input
+  id="customerName"
+  type="text"
+  placeholder="Full Name"
+>
 
-    <input
-      id="customerMobile"
-      type="tel"
-      placeholder="Mobile Number"
-    >
+<input
+  id="customerMobile"
+  type="tel"
+  placeholder="Mobile Number"
+>
 
-    <textarea
-      id="customerAddress"
-      rows="4"
-      placeholder="Complete Delivery Address"
-    ></textarea>
+<input
+  id="houseNo"
+  type="text"
+  placeholder="Flat, House No., Building, Company, Apartment"
+>
+
+<input
+  id="area"
+  type="text"
+  placeholder="Area, Street, Sector, Village"
+>
+
+<input
+  id="landmark"
+  type="text"
+  placeholder="Landmark"
+>
+
+<div style="display:flex; gap:10px;">
+
+  <input
+    id="pincode"
+    type="tel"
+    placeholder="Pincode"
+    maxlength="6"
+    style="flex:1;"
+  >
+
+  <input
+    id="city"
+    type="text"
+    placeholder="Town/City"
+    style="flex:1;"
+  >
+
+</div>
+
+<select
+  id="state"
+  style="width:100%; padding:12px; margin:6px 0; border:1px solid #ccc; border-radius:7px;"
+>
+
+  <option value="">Select State</option>
+  <option value="Gujarat">Gujarat</option>
+  <option value="Maharashtra">Maharashtra</option>
+  <option value="Rajasthan">Rajasthan</option>
+  <option value="Madhya Pradesh">Madhya Pradesh</option>
+  <option value="Delhi">Delhi</option>
+  <option value="Other">Other</option>
+
+</select>
+
+<textarea
+  id="deliveryInstructions"
+  rows="3"
+  placeholder="Delivery Instructions (Optional)"
+></textarea>
 
 
     <div class="paymentBox">
