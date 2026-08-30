@@ -978,67 +978,6 @@ function createOrderId(){
 
 function placeOrder(){
 
-  if(cart.length===0){
-    alert("Please add a product to cart.");
-    return;
-  }
-
-  let name = document.getElementById("customerName").value.trim();
-let mobile = document.getElementById("customerMobile").value.trim();
-let address = document.getElementById("customerAddress").value.trim();
-  if(!name || !mobile || !address){
-    alert("Please enter Name, Mobile Number and Address.");
-    return;
-  }
-
-  let total=cart.reduce(
-    (sum,item)=>sum+(item.price*item.qty),0
-  );
-
-  let orderId="SJH-"+Math.floor(100000+Math.random()*900000);
-
-  let product=cart.map(item=>{
-    return item.name+" x "+item.qty;
-  }).join(", ");
-
-  let data={
-    orderId:orderId,
-    customerName:name,
-    mobile:mobile,
-    address:address,
-    product:product,
-    size:"",
-    amount:total,
-    payment:"Cash on Delivery",
-    status:"Order Received"
-  };
-
-  fetch("https://script.google.com/macros/s/AKfycbyGZFT2Bn1QRR5MnxNU8wG4teDaUmh8SaVtI_yWEZ52xi_hyoTpNLJC1kTyT4ZkBbg/exec",{
-    method:"POST",
-    mode:"no-cors",
-    headers:{
-      "Content-Type":"text/plain;charset=utf-8"
-    },
-    body:JSON.stringify(data)
-  });
-
-  alert(
-    "✅ Order Received!\n\n"+
-    "Order ID: "+orderId+
-    "\nCustomer: "+name+
-    "\nMobile: "+mobile+
-    "\nAddress: "+address+
-    "\nTotal: ₹"+total
-  );
-
-  cart=[];
-  updateCart();
-  closeCart();
-
-}
-
- function placeOrder(){
-
   if(cart.length === 0){
     alert("Please add a product to cart.");
     return;
@@ -1056,18 +995,8 @@ let address = document.getElementById("customerAddress").value.trim();
   const payment =
     document.querySelector('input[name="payment"]:checked');
 
-  if(!name){
-    alert("Please enter your name.");
-    return;
-  }
-
-  if(!mobile){
-    alert("Please enter your mobile number.");
-    return;
-  }
-
-  if(!address){
-    alert("Please enter your delivery address.");
+  if(!name || !mobile || !address){
+    alert("Please enter Name, Mobile Number and Address.");
     return;
   }
 
@@ -1077,7 +1006,6 @@ let address = document.getElementById("customerAddress").value.trim();
   }
 
   const total = getTotal();
-
   const orderId = createOrderId();
 
   let paymentText = "";
@@ -1094,9 +1022,22 @@ let address = document.getElementById("customerAddress").value.trim();
     paymentText = "Cash on Delivery";
   }
 
+  let itemsHTML = "";
   let productText = "";
 
   cart.forEach(item => {
+
+    itemsHTML += `
+      <p>
+        👖 ${escapeHTML(item.name)}
+        <br>
+        📏 Size: ${escapeHTML(item.size)}
+        <br>
+        Qty: ${item.qty}
+        <br>
+        ₹${item.price * item.qty}
+      </p>
+    `;
 
     productText +=
       item.name +
@@ -1104,90 +1045,39 @@ let address = document.getElementById("customerAddress").value.trim();
       item.size +
       " | Qty: " +
       item.qty +
-      " | ₹" +
-      (item.price * item.qty) +
-      "\n";
-
+      ", ";
   });
 
   const data = {
-
     orderId: orderId,
-
     customerName: name,
-
     mobile: mobile,
-
     address: address,
-
     product: productText,
-
-    size: cart.map(item => item.size).join(", "),
-
     amount: total,
-
     payment: paymentText,
-
     status: "Order Received"
-
   };
-
 
   fetch(
     "https://script.google.com/macros/s/AKfycbyGZFT2Bn1QRR5MnxNU8wG4teDaUmh8SaVtI_yWEZ52xi_hyoTpNLJC1kTyT4ZkBbg/exec",
     {
       method: "POST",
-
       mode: "no-cors",
-
       headers: {
         "Content-Type": "text/plain;charset=utf-8"
       },
-
       body: JSON.stringify(data)
-
     }
   );
-
-
-  let itemsHTML = "";
-
-  cart.forEach(item => {
-
-    itemsHTML += `
-
-      <p>
-
-        👖 ${escapeHTML(item.name)}
-
-        <br>
-
-        📏 Size: ${escapeHTML(item.size)}
-
-        <br>
-
-        Qty: ${item.qty}
-
-        <br>
-
-        ₹${item.price * item.qty}
-
-      </p>
-
-    `;
-
-  });
-
 
   document
     .getElementById("confirmationOrderId")
     .innerText = orderId;
 
-
   document
     .getElementById("confirmationDetails")
     .innerHTML = `
-
       <p>
         <b>Customer:</b>
         ${escapeHTML(name)}
@@ -1219,14 +1109,11 @@ let address = document.getElementById("customerAddress").value.trim();
         📦 Status:
         <b>Order Received</b>
       </p>
-
     `;
-
 
   document
     .getElementById("confirmation")
     .style.display = "block";
-
 
   if(
     payment.value === "online" ||
@@ -1238,7 +1125,6 @@ let address = document.getElementById("customerAddress").value.trim();
       ? Math.round(total / 2)
       : total;
 
-
     const upiURL =
       "upi://pay" +
       "?pa=" + encodeURIComponent(UPI_ID) +
@@ -1247,27 +1133,17 @@ let address = document.getElementById("customerAddress").value.trim();
       "&cu=INR" +
       "&tn=" + encodeURIComponent("Order " + orderId);
 
-
     setTimeout(() => {
-
       window.location.href = upiURL;
-
     }, 1200);
-
   }
 
-
   cart = [];
 
   updateCart();
 
 }
 
-  cart = [];
-
-  updateCart();
-
-}
 
 
 function closeConfirmation(){
