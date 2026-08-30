@@ -1041,15 +1041,40 @@ function placeOrder(){
   const mobile =
     document.getElementById("customerMobile").value.trim();
 
-  const address =
-    document.getElementById("customerAddress").value.trim();
+ const houseNo =
+  document.getElementById("houseNo").value.trim();
 
-  const payment =
-    document.querySelector('input[name="payment"]:checked');
+const area =
+  document.getElementById("area").value.trim();
 
-  if(!name || !mobile || !address){
-    alert("Please enter Name, Mobile Number and Address.");
-    return;
+const landmark =
+  document.getElementById("landmark").value.trim();
+
+const pincode =
+  document.getElementById("pincode").value.trim();
+
+const city =
+  document.getElementById("city").value.trim();
+
+const state =
+  document.getElementById("state").value;
+
+const deliveryInstructions =
+  document.getElementById("deliveryInstructions").value.trim();
+
+const address =
+  "House/Building: " + houseNo +
+  " | Area: " + area +
+  " | Landmark: " + landmark +
+  " | Pincode: " + pincode +
+  " | City: " + city +
+  " | State: " + state +
+  " | Instructions: " + deliveryInstructions;
+
+if(!name || !mobile || !houseNo || !area || !pincode || !city || !state){
+  alert("Please enter all required delivery details.");
+  return;
+}
   }
 
   if(!payment){
