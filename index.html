@@ -996,88 +996,77 @@ function paymentChanged(){
       'input[name="payment"]:checked'
     );
 
-
   const box =
     document.getElementById("advanceBox");
 
+  if(selected && selected.value === "advance"){
+    box.style.display = "block";
+  }else{
+    box.style.display = "none";
+  }
+
+}
+
+
+function placeOrder(){
+
+  if(cart.length === 0){
+    alert("Please add a product to cart.");
+    return;
+  }
+
+  const name =
+    document.getElementById("customerName").value.trim();
+
+  const mobile =
+    document.getElementById("customerMobile").value.trim();
+
+  const houseNo =
+    document.getElementById("houseNo").value.trim();
+
+  const area =
+    document.getElementById("area").value.trim();
+
+  const landmark =
+    document.getElementById("landmark").value.trim();
+
+  const pincode =
+    document.getElementById("pincode").value.trim();
+
+  const city =
+    document.getElementById("city").value.trim();
+
+  const state =
+    document.getElementById("state").value;
+
+  const deliveryInstructions =
+    document.getElementById("deliveryInstructions").value.trim();
+
+  const address =
+    "House/Building: " + houseNo +
+    " | Area: " + area +
+    " | Landmark: " + landmark +
+    " | Pincode: " + pincode +
+    " | City: " + city +
+    " | State: " + state +
+    " | Instructions: " + deliveryInstructions;
+
+  const payment =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    );
 
   if(
-    selected &&
-    selected.value === "advance"
+    !name ||
+    !mobile ||
+    !houseNo ||
+    !area ||
+    !pincode ||
+    !city ||
+    !state
   ){
-
-    box.style.display = "block";
-
-  }else{
-
-    box.style.display = "none";
-const houseNo =
-  document.getElementById("houseNo").value.trim();
-
-const area =
-  document.getElementById("area").value.trim();
-
-const landmark =
-  document.getElementById("landmark").value.trim();
-
-const pincode =
-  document.getElementById("pincode").value.trim();
-
-const city =
-  document.getElementById("city").value.trim();
-
-const state =
-  document.getElementById("state").value;
-
-const deliveryInstructions =
-  document.getElementById("deliveryInstructions").value.trim();
-
-const address =
-  "House/Building: " + houseNo +
-  " | Area: " + area +
-  " | Landmark: " + landmark +
-  " | Pincode: " + pincode +
-  " | City: " + city +
-  " | State: " + state +
-  " | Instructions: " + deliveryInstructions;
-
-const payment =
-  document.querySelector('input[name="payment"]:checked');
-
-if(!name || !mobile || !houseNo || !area || !pincode || !city || !state){
-  alert("Please enter all required delivery details.");
-  return;
-}
-
-if(!payment){
-  alert("Please select a payment method.");
-  return;
-}
-const pincode =
-  document.getElementById("pincode").value.trim();
-
-const city =
-  document.getElementById("city").value.trim();
-
-const state =
-  document.getElementById("state").value;
-
-const deliveryInstructions =
-  document.getElementById("deliveryInstructions").value.trim();
-
-const address =
-  "House/Building: " + houseNo +
-  " | Area: " + area +
-  " | Landmark: " + landmark +
-  " | Pincode: " + pincode +
-  " | City: " + city +
-  " | State: " + state +
-  " | Instructions: " + deliveryInstructions;
-
-if(!name || !mobile || !houseNo || !area || !pincode || !city || !state){
-  alert("Please enter all required delivery details.");
-  return;
-}
+    alert("Please enter all required delivery details.");
+    return;
   }
 
   if(!payment){
@@ -1139,17 +1128,17 @@ if(!name || !mobile || !houseNo || !area || !pincode || !city || !state){
     status: "Order Received"
   };
 
- fetch(
-  "https://script.google.com/macros/s/AKfycbzK512qibw-eHH7NsDbw4zeUSXK3bsd_8MftcB5QHvsM6jTEpqAFSPepaHLMI9Pg1c/exec",
-  {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
-    body: JSON.stringify(data)
-  }
-);
+  fetch(
+    "https://script.google.com/macros/s/AKfycbzK512qibw-eHH7NsDbw4zeUSXK3bsd_8MftcB5QHvsM6jTEpqAFSPepaHLMI9Pg1c/exec",
+    {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(data)
+    }
+  );
 
   document
     .getElementById("confirmationOrderId")
@@ -1223,7 +1212,6 @@ if(!name || !mobile || !houseNo || !area || !pincode || !city || !state){
   updateCart();
 
 }
-
 
 
 function closeConfirmation(){
