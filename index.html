@@ -1217,5 +1217,166 @@ showProducts();
 updateCart();
 
 </script>
+<!-- PAYMENT OPTIONS -->
+<section class="sjh-payment">
+  <h2>Payment Options</h2>
+
+  <div class="sjh-pay-option">
+    <span>📱</span>
+    <div>
+      <strong>PhonePe</strong>
+      <small>Pay securely with PhonePe</small>
+    </div>
+    <input type="radio" name="payment" value="PhonePe">
+  </div>
+
+  <div class="sjh-pay-option">
+    <span>💳</span>
+    <div>
+      <strong>Google Pay</strong>
+      <small>Pay securely with Google Pay</small>
+    </div>
+    <input type="radio" name="payment" value="Google Pay">
+  </div>
+
+  <div class="sjh-pay-option">
+    <span>🔄</span>
+    <div>
+      <strong>Pay by any UPI App</strong>
+      <small>Google Pay, PhonePe, Paytm and more</small>
+    </div>
+    <input type="radio" name="payment" value="UPI">
+  </div>
+
+  <div class="sjh-pay-option">
+    <span>💳</span>
+    <div>
+      <strong>Credit / Debit Card</strong>
+      <small>Pay using your debit or credit card</small>
+    </div>
+    <input type="radio" name="payment" value="Card">
+  </div>
+
+  <div class="sjh-pay-option">
+    <span>🏦</span>
+    <div>
+      <strong>Net Banking</strong>
+      <small>Pay using your bank account</small>
+    </div>
+    <input type="radio" name="payment" value="Net Banking">
+  </div>
+
+  <div class="sjh-pay-option">
+    <span>💵</span>
+    <div>
+      <strong>Cash on Delivery / Pay on Delivery</strong>
+      <small>Pay when your order is delivered</small>
+    </div>
+    <input type="radio" name="payment" value="COD">
+  </div>
+
+  <div class="sjh-coupon">
+    <strong>🎟️ Promo / Coupon Code</strong>
+    <div>
+      <input type="text" placeholder="Enter promo code">
+      <button type="button">Apply</button>
+    </div>
+  </div>
+</section>
+
+<style>
+.sjh-payment {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.10);
+}
+
+.sjh-payment h2 {
+  margin: 0 0 18px;
+  font-size: 26px;
+}
+
+.sjh-pay-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.sjh-pay-option > span {
+  font-size: 28px;
+}
+
+.sjh-pay-option div {
+  flex: 1;
+}
+
+.sjh-pay-option strong {
+  display: block;
+  font-size: 18px;
+}
+
+.sjh-pay-option small {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+}
+
+.sjh-pay-option input {
+  width: 20px;
+  height: 20px;
+}
+
+.sjh-coupon {
+  padding-top: 22px;
+}
+
+.sjh-coupon strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.sjh-coupon div {
+  display: flex;
+  gap: 10px;
+}
+
+.sjh-coupon input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.sjh-coupon button {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .sjh-payment {
+    margin: 20px 12px;
+    padding: 16px;
+  }
+
+  .sjh-pay-option {
+    padding: 15px 5px;
+  }
+
+  .sjh-pay-option strong {
+    font-size: 16px;
+  }
+}
+</style>
 </body>
 </html>
