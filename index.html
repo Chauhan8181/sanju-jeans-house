@@ -478,7 +478,46 @@ footer{
 
 
 
-<
+<div class="paymentBox">
+
+<h3>Payment Method</h3>
+
+<label class="paymentOption">
+<input type="radio" name="payment" value="PhonePe" onchange="paymentChanged()">
+📱 PhonePe
+</label>
+
+<label class="paymentOption">
+<input type="radio" name="payment" value="Google Pay" onchange="paymentChanged()">
+💳 Google Pay
+</label>
+
+<label class="paymentOption">
+<input type="radio" name="payment" value="UPI" onchange="paymentChanged()">
+📲 Pay by any UPI App
+</label>
+
+<label class="paymentOption">
+<input type="radio" name="payment" value="Card" onchange="paymentChanged()">
+💳 Credit / Debit Card
+</label>
+
+<label class="paymentOption">
+<input type="radio" name="payment" value="Net Banking" onchange="paymentChanged()">
+🏦 Net Banking
+</label>
+
+<label class="paymentOption">
+<input type="radio" name="payment" value="advance" onchange="paymentChanged()">
+🟢 50% Advance Payment
+</label>
+
+<label class="paymentOption">
+<input type="radio" name="payment" value="COD" onchange="paymentChanged()">
+💵 Cash on Delivery / Pay on Delivery
+</label>
+
+</div>
     <div id="advanceBox" class="advanceBox">
 
       <b>50% Advance:</b>
