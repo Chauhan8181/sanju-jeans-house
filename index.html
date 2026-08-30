@@ -1059,17 +1059,17 @@ function placeOrder(){
     status: "Order Received"
   };
 
-  fetch(
-    https://script.google.com/macros/s/AKfycbzK512qibw-eHH7NsDbw4zeUSXK3bsd_8MftcB5QHvsM6jTEpqAFSPepaHLMI9Pg1c/exec
-    {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8"
-      },
-      body: JSON.stringify(data)
-    }
-  );
+ fetch(
+  "https://script.google.com/macros/s/AKfycbzK512qibw-eHH7NsDbw4zeUSXK3bsd_8MftcB5QHvsM6jTEpqAFSPepaHLMI9Pg1c/exec",
+  {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(data)
+  }
+);
 
   document
     .getElementById("confirmationOrderId")
