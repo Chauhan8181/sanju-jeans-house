@@ -978,16 +978,65 @@ function createOrderId(){
 
 function placeOrder(){
 
-  if(cart.length === 0){
-
-    alert(
-      "Please add a product to cart."
-    );
-
+  if(cart.length===0){
+    alert("Please add a product to cart.");
     return;
-
   }
 
+  let name=document.getElementById("name").value.trim();
+  let mobile=document.getElementById("mobile").value.trim();
+  let address=document.getElementById("address").value.trim();
+
+  if(!name || !mobile || !address){
+    alert("Please enter Name, Mobile Number and Address.");
+    return;
+  }
+
+  let total=cart.reduce(
+    (sum,item)=>sum+(item.price*item.qty),0
+  );
+
+  let orderId="SJH-"+Math.floor(100000+Math.random()*900000);
+
+  let product=cart.map(item=>{
+    return item.name+" x "+item.qty;
+  }).join(", ");
+
+  let data={
+    orderId:orderId,
+    customerName:name,
+    mobile:mobile,
+    address:address,
+    product:product,
+    size:"",
+    amount:total,
+    payment:"Cash on Delivery",
+    status:"Order Received"
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbyGZFT2Bn1QRR5MnxNU8wG4teDaUmh8SaVtI_yWEZ52xi_hyoTpNLJC1kTyT4ZkBbg/exec",{
+    method:"POST",
+    mode:"no-cors",
+    headers:{
+      "Content-Type":"text/plain;charset=utf-8"
+    },
+    body:JSON.stringify(data)
+  });
+
+  alert(
+    "✅ Order Received!\n\n"+
+    "Order ID: "+orderId+
+    "\nCustomer: "+name+
+    "\nMobile: "+mobile+
+    "\nAddress: "+address+
+    "\nTotal: ₹"+total
+  );
+
+  cart=[];
+  updateCart();
+  closeCart();
+
+}
 
   const name =
     document
