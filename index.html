@@ -1102,6 +1102,7 @@ function placeOrder(){
 
   let itemsHTML = "";
   let productText = "";
+  let sizeText = "";
 
   cart.forEach(item => {
 
@@ -1119,12 +1120,17 @@ function placeOrder(){
 
     productText +=
       item.name +
-      " | Size: " +
-      item.size +
       " | Qty: " +
       item.qty +
       ", ";
+
+    sizeText +=
+      item.size +
+      ", ";
   });
+
+  productText = productText.trim();
+  sizeText = sizeText.trim();
 
   const data = {
     orderId: orderId,
@@ -1132,6 +1138,7 @@ function placeOrder(){
     mobile: mobile,
     address: address,
     product: productText,
+    size: sizeText,
     amount: total,
     payment: paymentText,
     status: "Order Received"
@@ -1182,73 +1189,18 @@ function placeOrder(){
         <b>Payment:</b>
         ${paymentText}
       </p>
-
-      <p>
-        📦 Status:
-        <b>Order Received</b>
-      </p>
     `;
 
   document
     .getElementById("confirmation")
     .style.display = "block";
 
-  if(
-    payment.value === "online" ||
-    payment.value === "advance"
-  ){
-
-    const amount =
-      payment.value === "advance"
-      ? Math.round(total / 2)
-      : total;
-
-    const upiURL =
-      "upi://pay" +
-      "?pa=" + encodeURIComponent(UPI_ID) +
-      "&pn=" + encodeURIComponent("Sanju Jeans House") +
-      "&am=" + amount +
-      "&cu=INR" +
-      "&tn=" + encodeURIComponent("Order " + orderId);
-
-    setTimeout(() => {
-      window.location.href = upiURL;
-    }, 1200);
-  }
+  document
+    .getElementById("cartPanel")
+    .classList.remove("open");
 
   cart = [];
 
   updateCart();
-
 }
-
-
-function closeConfirmation(){
-
-  document
-    .getElementById("confirmation")
-    .style.display = "none";
-
-}
-
-
-function escapeHTML(text){
-
-  const div =
-    document.createElement("div");
-
-  div.textContent = text;
-
-  return div.innerHTML;
-
-}
-
-
-showProducts();
-
-updateCart();
-
-</script>
-
-</body>
 </html>
