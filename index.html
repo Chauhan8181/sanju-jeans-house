@@ -1203,4 +1203,19 @@ function placeOrder(){
 
   updateCart();
 }
+function closeConfirmation(){
+  document.getElementById("confirmation").style.display = "none";
+}
+
+function escapeHTML(text){
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+showProducts();
+updateCart();
+
+</script>
+</body>
 </html>
